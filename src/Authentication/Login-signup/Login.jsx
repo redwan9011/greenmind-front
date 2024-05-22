@@ -1,10 +1,11 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Navbar from '../../SharedSection/Navbar/Navbar';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 const Login = () => {
-
+const {login, user} = useContext(AuthContext)
   const navigate = useNavigate()
   const location = useLocation()
   const from = location?.state?.from?.pathname || '/'
@@ -17,19 +18,19 @@ const Login = () => {
 
   } = useForm()
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
 
-    // login(data.email, data.password)
-    //   .then(result => {
-    //     console.log(result.user);
+    login(data.email, data.password)
+      .then(result => {
+        console.log(result.user);
 
-    //     navigate(from, { replace: true })
+        navigate(from, { replace: true })
 
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //     alert(err.message)
-    //   })
+      })
+      .catch(err => {
+        console.log(err);
+        alert(err.message)
+      })
 
   }
 
