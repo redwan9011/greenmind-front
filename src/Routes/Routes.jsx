@@ -6,6 +6,8 @@ import Signup from "../Authentication/Login-signup/Signup";
 import Products from "../Pages/Products/Products";
 import Dashboard from "../Dashboad/Dashboard";
 import ManageUser from "../DashboardPages/ManageUser/ManageUser";
+import PrivateRouts from "./PrivateRouts";
+import AddProduct from "../DashboardPages/AddProduct/AddProduct";
 
 
 
@@ -21,7 +23,8 @@ const router = createBrowserRouter([
         },
         {
             path: '/products',
-            element: <Products></Products>
+            element: <Products></Products>,
+            loader: () => fetch(`http://localhost:3000/productCount`),
         }
       ]
     },
@@ -36,12 +39,16 @@ const router = createBrowserRouter([
 
     {
       path: '/dasboard',
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRouts><Dashboard></Dashboard></PrivateRouts>,
       children: [
         {
           path: 'users',
           element: <ManageUser></ManageUser>
-        }
+        },
+        {
+          path: 'addproduct',
+          element: <AddProduct></AddProduct>
+        },
       ]
     }
   ]);
