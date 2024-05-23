@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxioPublic";
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
@@ -13,22 +12,12 @@ const Products = () => {
     const numberOfPages = Math.ceil(count/itemsPerPage)
    const pages = [...Array(numberOfPages).keys()] 
 
-
-    // console.log(currentPage, pages, numberOfPages);
-    // const { refetch, data: products = [] } = useQuery({
-    //     queryKey: ['products'],
-    //     queryFn: async () => {
-    //         const res = await axiosPublic.get(`/product?page=${currentPage}&size=${itemsPerPage}`)
-    //         return res.data
-    //     }
-    // })
-
     useEffect(() => {
         axiosPublic.get(`/product?page=${currentPage}&size=${itemsPerPage}`)
             .then(res => {
                 setProducts(res.data)
             })
-    }, [axiosPublic, currentPage])
+    }, [axiosPublic, currentPage,itemsPerPage])
 
     // pagination
     const handlePerPage = e => {
