@@ -1,6 +1,6 @@
 import useAxiosPublic from "../../Hooks/useAxioPublic";
 import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import './style.css'
 
 const Products = () => {
@@ -51,7 +51,7 @@ const Products = () => {
                         <div className="card-body">
                             <h2 className="card-title">{product.name}</h2>
                            <p>{product.price}</p>
-                           
+                           <Link to={`/product/${product._id}`}>Detail</Link>
                         </div>
                     </div>
                 )

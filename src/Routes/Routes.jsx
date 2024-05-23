@@ -8,6 +8,7 @@ import Dashboard from "../Dashboad/Dashboard";
 import ManageUser from "../DashboardPages/ManageUser/ManageUser";
 import PrivateRouts from "./PrivateRouts";
 import AddProduct from "../DashboardPages/AddProduct/AddProduct";
+import ProductDetails from "../Pages/Products/ProductDetails";
 
 
 
@@ -22,9 +23,14 @@ const router = createBrowserRouter([
             element: <Home></Home>
         },
         {
-            path: '/products',
+            path: '/product',
             element: <Products></Products>,
             loader: () => fetch(`http://localhost:3000/productCount`),
+        },
+        {
+          path: '/product/:id',
+          element: <ProductDetails></ProductDetails>,
+          loader: ({params})=> fetch(`http://localhost:3000/product/${params.id}`)
         }
       ]
     },
