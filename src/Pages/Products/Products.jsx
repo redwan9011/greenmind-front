@@ -7,14 +7,14 @@ import './style.css'
 const Products = () => {
     const axiosPublic = useAxiosPublic()
     const [products, setProducts] = useState([]) 
-    const [ currentPage , setCurrentPage] = useState(0)
+    const [currentPage , setCurrentPage] = useState(0)
     const {count} = useLoaderData();
-    console.log(count);
-     const itemsPerPage = 5
-     const numberOfPages = Math.ceil(count/itemsPerPage)
-    const pages = [...Array(numberOfPages).keys()] 
+    const [itemsPerPage ,setItemsPerPage]=useState (6)
+    const numberOfPages = Math.ceil(count/itemsPerPage)
+   const pages = [...Array(numberOfPages).keys()] 
 
-    console.log(currentPage, pages, numberOfPages);
+
+    // console.log(currentPage, pages, numberOfPages);
     // const { refetch, data: products = [] } = useQuery({
     //     queryKey: ['products'],
     //     queryFn: async () => {
@@ -29,6 +29,17 @@ const Products = () => {
                 setProducts(res.data)
             })
     }, [axiosPublic, currentPage])
+
+    // pagination
+    const handlePerPage = e => {
+        e.preventDefault()
+       
+        const value = parseInt(e.target.value)
+        setItemsPerPage(value)
+        setCurrentPage(0)
+        
+      }
+
     const handlePrevPage = ()=>{
         if(currentPage >0 ){
             setCurrentPage(currentPage - 1)
@@ -40,7 +51,9 @@ const Products = () => {
         }
     } 
     return (
-        <div className="grid grid-cols-3 gap-5 my-10">
+
+    <div className="my-10"> 
+        <div className="grid grid-cols-3 gap-5 ">
             {
                 products.map(product =>
 
@@ -55,8 +68,11 @@ const Products = () => {
                 )
             }
 
-            {/* pagination */}
-            <div className="text-center mt-10 flex  justify-center gap-2 relative">
+           
+        </div>
+
+         {/* pagination */}
+         <div className="text-center mt-10 flex  justify-center gap-2 relative">
                     
                     <button className=" bg-black text-white text-md px-2 py-1 rounded-md $" onClick={handlePrevPage}>prev</button>
                     {
@@ -68,8 +84,14 @@ const Products = () => {
                         >{page +1}</button>)
                     }
                     <button className=" bg-black text-white text-md px-2 py-1 rounded-md $" onClick={handleNexPage}>Next</button>
+                <select value={itemsPerPage} onChange={handlePerPage}  name="" id="">
+                    <option value="6">6</option>
+                    <option value="9">9</option>
+                    <option value="18">18</option>
+                </select>
                 </div>
         </div>
+       
     );
 };
 
