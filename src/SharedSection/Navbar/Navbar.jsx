@@ -1,5 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaRegCircleUser } from "react-icons/fa6";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const navLinkStyle = ({ isActive, isPending }) => {
@@ -12,7 +14,7 @@ const navLinkStyle = ({ isActive, isPending }) => {
   };
 
 const Navbar = () => {
-
+  const {user, logout} = useContext(AuthContext)
     const links = <>
     <li><NavLink to='/' className={navLinkStyle}>Home</NavLink></li>
     <li><NavLink to='/products' className={navLinkStyle}>Products</NavLink></li>
@@ -46,8 +48,12 @@ const Navbar = () => {
   <div className="dropdown dropdown-bottom dropdown-end ">
   <div tabIndex={0} role="button" className=" m-1 text-4xl"><FaRegCircleUser /></div>
   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box  ">
-    <li ><Link>Dashboard</Link></li>
-    <li><Link to='/login'>Login</Link></li>
+    <li ><Link to='/dasboard'>Dashboard</Link></li>
+    <li>
+      {
+          user ? <li onClick={()=>logout()} className="cursor-pointer">Logout</li> : <li><Link to='/login'>Login</Link></li>
+      }
+    </li>
   </ul>
 </div>
   </div>

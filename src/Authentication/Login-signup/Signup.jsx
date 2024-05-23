@@ -3,7 +3,10 @@ import Navbar from "../../SharedSection/Navbar/Navbar";
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate  } from 'react-router-dom';
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import useAxiosPublic from "../../Hooks/useAxioPublic";
+import { updateProfile } from "firebase/auth";
 const Signup = () => {
+  const axiosPublic = useAxiosPublic()
     const {signup} = useContext(AuthContext)
     const navigate = useNavigate()
     const {
@@ -16,43 +19,39 @@ const Signup = () => {
       const onSubmit = (data) => {
         console.log(data);
         signup(data.email, data.password)
-        .then( result => {
-            console.log(result.user);
-            navigate('/')
-        })
-        .catch( error => {
-            console.log(error);
-        })
-        //  .then( result => {
+         .then( result => {
                    
-        //            updateProfile(result.user , {
-        //                displayName: data.name,
-        //                photoURL: data.photo
-        //            })
-        //            .then(()=> {
-        //              // create users entry in database
-        //              const usersInfo = {
-        //                name: data.name,
-        //                email: data.email,
-        //                photo: data.photo,
+                   updateProfile(result.user , {
+                       displayName: data.name,
+                      
+                   })
+                   .then(()=> {
+                     // create users entry in database
+                     const usersInfo = {
+                       name: data.name,
+                       email: data.email,
+                     
                        
-        //              }
-        //              axiosPublic.post('/users', usersInfo)
-        //              .then( res => {
-        //                console.log( 'users added in database',res.data);
-        //                if(res.data.insertedId){
-        //                  alert('sign up succesfully')
-        //                }
-        //              })
+                     }
+                     axiosPublic.post('/users', usersInfo)
+                     .then( res => {
+                       console.log( 'users added in database',res.data);
+                       if(res.data.insertedId){
+                         alert('sign up succesfully')
+                       }
+                       else{
+                        return
+                       }
+                     })
                     
-        //            })
-        //            .catch(()=> {})
-        //           navigate('/')
-        //        })
-        //        .catch(err => {
-        //            console.log(err);
-        //            alert(err.message)
-        //        })
+                   })
+                   .catch(()=> {})
+                  navigate('/')
+               })
+               .catch(err => {
+                   console.log(err);
+                   alert(err.message)
+               })
        }
 
     return (
@@ -69,13 +68,7 @@ const Signup = () => {
               <input type="text" {...register("name"  , { required: true })} name='name' placeholder="your name" className="input " />
               {errors.name && <span className='text-red-500 mt-1'>This field is required</span>}
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Photo</span>
-              </label>
-              <input type="text" {...register("photo"  , { required: true })} name='photo' placeholder="photo url" className="input " />
-              {errors.photo && <span className='text-red-500 mt-1'>This field is required</span>}
-            </div>
+        
     
             <div className="form-control">
               <label className="label">
