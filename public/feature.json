@@ -2,17 +2,17 @@
     {
       "id": "1",
       "category": "Home",
-      "image": "https://example.com/images/smartphone_x200.jpg"
+      "image": "https://i.ibb.co/b6Ffnc4/card2.png"
     },
     {
       "id": "2",
       "category": "Electronics",
-      "image": "https://example.com/images/wireless_earbuds.jpg"
+      "image": "https://i.ibb.co/b6Ffnc4/card2.png"
     },
     {
       "id": "3",
       "category": "Fashion",
-      "image": "https://example.com/images/designer_handbag.jpg"
+      "image": "https://i.ibb.co/b6Ffnc4/card2.png"
     }
 
   ]

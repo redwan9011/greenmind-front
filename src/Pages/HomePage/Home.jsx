@@ -1,6 +1,9 @@
 import Banner from "../../Components/Banner/Banner";
-import FeatureProducts from "../../Components/CategoryProducts/Category";
-import Footer from "../../SharedSection/Footer/Footer";
+import Category from "../../Components/CategoryProducts/Category";
+import Feature from "../../Components/FeatureProducts/Feature";
+
+
+
 
 
 const Home = () => {
@@ -8,7 +11,8 @@ const Home = () => {
         <div>
            
            <Banner></Banner>
-           <FeatureProducts></FeatureProducts>
+         <Feature></Feature>
+          <Category></Category>
          
         </div>
     );
