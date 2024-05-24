@@ -1,6 +1,15 @@
+import { useEffect, useState } from "react";
+import useAxiosPublic from "../../Hooks/useAxioPublic";
 
 
 const Banner = () => {
+  const axiosPublic = useAxiosPublic()
+  const [count ,setCount] = useState({})
+
+  useEffect( ()=> {
+      axiosPublic.get('/productCount')
+      .then(res => console.log(res.data.count))
+  }, [])
     return (
         <div>
             <div className="hero " style={{backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)'}}>

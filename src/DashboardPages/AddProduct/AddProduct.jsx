@@ -30,7 +30,8 @@ const axiospublic = useAxiosPublic()
             price: data.price,
             specifications: data.specifications,
             availability: data.availability,
-            description: data.description
+            description: data.description,
+            category: data.category,
 
         }
         axiospublic.post( '/product' , product)
@@ -45,7 +46,7 @@ const axiospublic = useAxiosPublic()
      
     return (
         <div>
-            <form  onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+            <form  onSubmit={handleSubmit(onSubmit)} className="space-y-3 bg-slate-300 p-10">
 
             <div className="form-control">
               <label className="label">
@@ -96,6 +97,18 @@ const axiospublic = useAxiosPublic()
               <textarea {...register("description"  , { required: true })} name='description' placeholder="description" className="textarea textarea-bordered"></textarea>
               {errors.name && <span className='text-red-500 mt-1'>This field is required</span>}
             </div>
+
+            <div className='w-full'>
+                  <label className="block mb-1 font-semibold"><span className='text-red-700 pr-2'>*</span>Select category</label>
+                  <select {...register("category")} name="category" className="input border-none rounded-md w-full">
+
+                    <option value='Home'>Home</option>
+                    <option value='Electronics'>Electronics</option>
+                    <option value='Fashion'>Fashion</option>
+                
+
+                  </select>
+                </div>
            
         
             <div className="form-control mt-2">

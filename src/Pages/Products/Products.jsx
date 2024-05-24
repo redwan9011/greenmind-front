@@ -5,9 +5,13 @@ import './style.css'
 
 const Products = () => {
     const axiosPublic = useAxiosPublic()
+
+
+   
     const [products, setProducts] = useState([]) 
     const [currentPage , setCurrentPage] = useState(0)
-    const {count} = useLoaderData();
+  
+   const {count} = useLoaderData()
     const [itemsPerPage ,setItemsPerPage]=useState (6)
     const numberOfPages = Math.ceil(count/itemsPerPage)
    const pages = [...Array(numberOfPages).keys()] 

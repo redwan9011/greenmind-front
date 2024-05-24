@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const FeatureProducts = () => {
@@ -20,8 +21,8 @@ const FeatureProducts = () => {
                     </figure>
                     <div className="card-body items-center text-center">
                       <h2 className="card-title">{product.category}</h2>
-                     <h3>Name: {product.name}</h3>
-                     <p>rating: {product.rating}</p>
+                     <h3>Category {product.category}</h3>
+                    <Link to={`/products/${product.category}`}> See Products</Link>
                     </div>
                   </div>
                 )
