@@ -9,7 +9,7 @@ import ManageUser from "../DashboardPages/ManageUser/ManageUser";
 import PrivateRouts from "./PrivateRouts";
 import AddProduct from "../DashboardPages/AddProduct/AddProduct";
 import ProductDetails from "../Pages/Products/ProductDetails";
-import ProductCategory from "../Components/FeatureProducts/ProductCategory";
+import ProductCategory from "../Components/CategoryProducts/ProductCategory";
 
 
 
