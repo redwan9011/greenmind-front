@@ -32,6 +32,7 @@ const axiospublic = useAxiosPublic()
             availability: data.availability,
             description: data.description,
             category: data.category,
+            brand: data.brand
 
         }
         axiospublic.post( '/product' , product)
@@ -86,6 +87,14 @@ const axiospublic = useAxiosPublic()
                 <span className="label-text">Availability</span>
               </label>
               <input type="text" {...register("availability"  , { required: true })} name='availability' placeholder="availability" className="input " />
+              {errors.name && <span className='text-red-500 mt-1'>This field is required</span>}
+            </div>
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Brand</span>
+              </label>
+              <input type="text" {...register("brand"  , { required: true })} name='brand' placeholder="brand" className="input " />
               {errors.name && <span className='text-red-500 mt-1'>This field is required</span>}
             </div>
 

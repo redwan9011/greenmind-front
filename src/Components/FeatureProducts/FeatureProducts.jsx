@@ -22,7 +22,7 @@ const FeatureProducts = () => {
                     <div className="card-body items-center text-center">
                       <h2 className="card-title">{product.category}</h2>
                      <h3>Category {product.category}</h3>
-                    <Link to={`/products/${product.category}`}> See Products</Link>
+                    <Link to={`/product`}> See Products</Link>
                     </div>
                   </div>
                 )

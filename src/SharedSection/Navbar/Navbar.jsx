@@ -17,7 +17,7 @@ const Navbar = () => {
   const {user, logout} = useContext(AuthContext)
     const links = <>
     <li><NavLink to='/' className={navLinkStyle}>Home</NavLink></li>
-    <li><NavLink to='/product' className={navLinkStyle}>All Products</NavLink></li>
+    <li><NavLink to='/product' className={navLinkStyle}> Products</NavLink></li>
   
 </>
     return (
