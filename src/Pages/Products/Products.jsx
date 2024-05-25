@@ -32,6 +32,7 @@ const Products = () => {
         fetchData();
     }, [axiosPublic, currentPage, itemsPerPage, selectedCategory, sortOrder, brandFilter]);
 
+     
     // Pagination handlers
     const handlePerPage = e => {
         e.preventDefault();
@@ -73,7 +74,15 @@ const Products = () => {
     const applyBrandFilter = () => {
         setCurrentPage(0);
     };
-
+    const [reviews, setReviews] = useState([])
+    useEffect(() => {
+        axiosPublic.get('/review')
+            .then(res => {
+                const allreview = res.data;
+                setReviews(allreview)
+            })
+    }, [])
+    console.log(reviews);
     return (
         <div className="my-10">
             <div >
@@ -121,6 +130,23 @@ const Products = () => {
                             <p>{product.price}</p>
                             <h2>{product.category}</h2>
                             <h5>{product.brand}</h5>
+                            <div>
+                        
+                        { 
+                             <div>
+                             {
+                                    reviews.filter(review=> review.commentid ===product._id).slice(1,2).map((rev, i) => <div key={rev._id}>
+                                     
+                                      <span>{rev.rating}</span>
+                                    
+                                      </div>
+    
+                                )
+                                    }
+                             </div>
+                        }
+                         
+                            </div>
                             <Link to={`/product/${product._id}`}>Detail</Link>
                         </div>
                     </div>
