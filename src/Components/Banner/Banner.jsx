@@ -36,7 +36,7 @@ const Banner = () => {
                 <input type="text" className="grow" placeholder="what are you looking for?" />
             
               </label>
-              <input type="submit" value="Search" className="px-4 py-3 bg-white rounded-lg text-black cursor-pointer hover:bg-gray-600 hover:text-white" />
+              <input type="submit" value="Search" className="px-4 py-3 bg-white rounded-lg text-black font-semibold cursor-pointer hover:bg-cyan-300 duration-300 " />
             </form>
           </div>
         </div>

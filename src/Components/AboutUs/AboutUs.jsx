@@ -10,19 +10,19 @@ const AboutUs = () => {
             <div className="grid grid-cols-3 justify-center mt-7">
 
                 <div className="flex flex-col items-center space-y-1">
-                <span className="bg-gray-300 p-6 rounded-full text-2xl"><BiSolidShoppingBags /></span>
+                <span className="bg-cyan-200 p-6 rounded-full text-2xl"><BiSolidShoppingBags /></span>
                 <h1 className=" font-bold ">Large Assortment</h1>
                 <p className="text-sm text-gray-500 px-9">We offer many different type of products with many variations in each category</p>
                 </div>
 
                 <div className="flex flex-col items-center space-y-1">
-               <span className="bg-gray-300 p-6 rounded-full text-2xl"> <MdOutlineLocalShipping /></span>
+               <span className="bg-cyan-200 p-6 rounded-full text-2xl"> <MdOutlineLocalShipping /></span>
                 <h1 className=" font-bold ">Fast and Free Shipping</h1>
                 <p className="text-sm text-gray-500 px-10">4-days or less delivery time, free shipping and an expedit delivery option</p>
                 </div>
 
                 <div className="flex flex-col items-center space-y-1">
-               <span className="bg-gray-300 p-6 rounded-full text-2xl"> <MdAddIcCall /></span>
+               <span className="bg-cyan-200 p-6 rounded-full text-2xl"> <MdAddIcCall /></span>
                 <h1 className=" font-bold ">24/7 Support</h1>
                 <p className="text-sm text-gray-500 px-10">Answer to any business related inquiry 24/7 in real-time</p>
                 </div>
