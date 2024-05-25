@@ -1,37 +1,61 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-
+import Button from "../Button/Button";
+import Home from "../../assets/Home.webp"
+import Fashion from "../../assets/fashion.webp"
+import Electronic from "../../assets/electronic.webp"
 
 const Category = () => {
-    const [ products, setProducts] = useState([])
-    useEffect( ()=> {
-        axios.get('../../../public/feature.json')
-        .then( res => setProducts(res.data))
-    }, [])
-    console.log(products);
-    return (
-       <div>
-        <h1>Category products</h1>
-         <div className="grid grid-cols-3 gap-5">
-            {
-                products.map( product => 
-                    <div className="card  bg-base-100 shadow-xl" key={product.id}>
-                    <figure className="px-10 pt-10">
-                      <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" className="rounded-xl" />
-                    </figure>
-                    <div className="card-body items-center text-center">
-                      <h2 className="card-title">{product.category}</h2>
-                     <h3>Category {product.category}</h3>
-                    <Link to={`/product`}> See Products</Link>
-                    </div>
-                  </div>
-                )
-            }
+
+
+  return (
+    <div className="mt-6 mb-10 ">
+      <h1 className="text-xl md:text-2xl lg:text-4xl font-bold text-center">Category products</h1>
+      <p className="text-center text-gray-500 mt-2">Find what are you looking for</p>
+      <div className="bg-gray-300 mt-16">
+
+        <div className="grid grid-cols-3 gap-20  max-w-6xl mx-auto">
+
+          <div className="card -mt-10" >
+            <figure className="">
+              <img src={Home} alt="home" className="rounded-xl h-96" />
+            </figure>
+            <div className=" text-center">
+
+              <h3 className="font-bold text-lg mt-1">Home </h3>
+
+            </div>
+          </div>
+
+          <div className="card  mt-10" >
+            <figure className=" ">
+              <img src={Electronic} alt="electronic" className="rounded-xl h-96" />
+            </figure>
+            <div className=" text-center">
+
+              <h3 className="font-bold text-lg mt-1">Elcetronics </h3>
+
+            </div>
+          </div>
+
+          <div className="card -mt-10 " >
+            <figure className="">
+              <img src={Fashion} alt="fashion Image" className="rounded-xl h-96" />
+            </figure>
+            <div className=" text-center">
+
+              <h3 className="font-bold text-lg mt-1">Fashion </h3>
+
+            </div>
+          </div>
+
         </div>
-       </div>
-    );
+        <div className="text-center mt-4 pb-14">
+          <Link to={`/product`}> <Button buttonText="See Products" className="text-white"></Button> </Link>
+        </div>
+      </div>
+
+    </div>
+  );
 };
 
 export default Category;

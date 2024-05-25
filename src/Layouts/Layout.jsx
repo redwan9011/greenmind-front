@@ -4,7 +4,7 @@ import Navbar from "../SharedSection/Navbar/Navbar";
 
 const Layout = () => {
     return (
-        <div className="max-w-6xl mx-auto">
+        <div className="">
             <Navbar></Navbar>
             <Outlet></Outlet>
         </div>
