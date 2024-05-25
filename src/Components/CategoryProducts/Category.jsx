@@ -11,7 +11,7 @@ const Category = () => {
     <div className="mt-6 mb-10 ">
       <h1 className="text-xl md:text-2xl lg:text-4xl font-bold text-center">Category products</h1>
       <p className="text-center text-gray-500 mt-2">Find what are you looking for</p>
-      <div className="bg-gray-300 mt-16">
+      <div className="bg-cyan-200 mt-16">
 
         <div className="grid grid-cols-3 gap-20  max-w-6xl mx-auto">
 
