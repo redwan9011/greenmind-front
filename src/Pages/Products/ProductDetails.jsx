@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { FaRegStar } from "react-icons/fa6";
 import { AiFillDislike, AiFillLike } from "react-icons/ai";
 import useAxiosPublic from "../../Hooks/useAxioPublic";
@@ -8,6 +8,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const ProductDetails = () => {
     const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
     const [reaction, setReaction] = useState(null);
     const [review, setReview] = useState([])
     const axiosPublic = useAxiosPublic()
@@ -29,18 +30,24 @@ const ProductDetails = () => {
 
     const handlereview = e => {
         e.preventDefault();
-        const form = e.target;
-        const review = form.review.value;
-        const rating = form.rating.value;
-        const reviewdata = { review, commentid: _id, reviewer: user.displayName, reviewerEmail: user.email, date: justDate, rating }
-      
-        axiosPublic.post('/review', reviewdata)
+
+        if (user) {
+            const form = e.target;
+            const review = form.review.value;
+            const rating = form.rating.value;
+            const reviewdata = { review, commentid: _id, reviewer: user.displayName, reviewerEmail: user.email, date: justDate, rating }
+          
+            axiosPublic.post('/review', reviewdata)
             .then(res => {
                 console.log(res.data);
                 form.reset()
             })
+        }
+       else {
+        return navigate('/login')
+       }
+    
     }
-
     useEffect(() => {
         axiosPublic.get('/review')
             .then(res => {
@@ -123,7 +130,7 @@ const ProductDetails = () => {
                         </div>
 
                         <textarea name="review" placeholder="type your review" className="textarea textarea-bordered w-full" required></textarea>
-                        <input type="submit" value="Comment" className="bg-slate-700 px-2 py-1 md:px-3 md:py-2 text-white cursor-pointer mt-2 rounded-md text-sm md:text-base" />
+                        <input type="submit" value="Review" className="bg-slate-700 px-2 py-1 md:px-3 md:py-2 text-white cursor-pointer mt-2 rounded-md text-sm md:text-base" />
                     </form>
 
 
