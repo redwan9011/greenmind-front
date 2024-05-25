@@ -5,6 +5,7 @@ import { Link, useNavigate  } from 'react-router-dom';
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import useAxiosPublic from "../../Hooks/useAxioPublic";
 import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 const Signup = () => {
   const axiosPublic = useAxiosPublic()
     const {signup} = useContext(AuthContext)
@@ -37,7 +38,13 @@ const Signup = () => {
                      .then( res => {
                        console.log( 'users added in database',res.data);
                        if(res.data.insertedId){
-                         alert('sign up succesfully')
+                        Swal.fire({
+                          position: "top-end",
+                          icon: "success",
+                          title: "Sign up successfully",
+                          showConfirmButton: false,
+                          timer: 1500
+                        });
                        }
                        else{
                         return

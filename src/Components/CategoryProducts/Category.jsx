@@ -13,11 +13,11 @@ const Category = () => {
       <p className="text-center text-gray-500 mt-2">Find what are you looking for</p>
       <div className="bg-cyan-200 mt-16">
 
-        <div className="grid grid-cols-3 gap-20  max-w-6xl mx-auto">
+        <div className=" grid grid-cols-3 gap-5 md:gap-9 lg:gap-20  max-w-6xl mx-auto px-3 md:px-6">
 
           <div className="card -mt-10" >
             <figure className="">
-              <img src={Home} alt="home" className="rounded-xl h-96" />
+              <img src={Home} alt="home" className="rounded-xl h-40 md:h-72 lg:h-96" />
             </figure>
             <div className=" text-center">
 
@@ -28,7 +28,7 @@ const Category = () => {
 
           <div className="card  mt-10" >
             <figure className=" ">
-              <img src={Electronic} alt="electronic" className="rounded-xl h-96" />
+              <img src={Electronic} alt="electronic" className="rounded-xl h-40 md:h-72 lg:h-96" />
             </figure>
             <div className=" text-center">
 
@@ -39,7 +39,7 @@ const Category = () => {
 
           <div className="card -mt-10 " >
             <figure className="">
-              <img src={Fashion} alt="fashion Image" className="rounded-xl h-96" />
+              <img src={Fashion} alt="fashion Image" className="rounded-xl h-40 md:h-72 lg:h-96" />
             </figure>
             <div className=" text-center">
 
@@ -49,7 +49,7 @@ const Category = () => {
           </div>
 
         </div>
-        <div className="text-center mt-4 pb-14">
+        <div className="text-center mt-4 pb-5 md:pb-9 lg:pb-14">
           <Link to={`/product`}> <Button buttonText="See Products" className="text-white"></Button> </Link>
         </div>
       </div>

@@ -7,7 +7,8 @@ const Dashboard = () => {
     return (
         <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-12 gap-5">
-                <div className="col-span-3 bg-cyan-300 min-h-screen text-center py-5">
+                {/* dashboard left */}
+                <div className="col-span-3  bg-cyan-300 min-h-screen text-center py-5">
                      
                {
                 isAdmin ? 
@@ -24,6 +25,7 @@ const Dashboard = () => {
             </ul>
                }
                 </div>
+                {/* dasboard right */}
                 <div className="col-span-9">
                     
 

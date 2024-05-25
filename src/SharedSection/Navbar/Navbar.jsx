@@ -4,20 +4,25 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
-const navLinkStyle = ({ isActive, isPending }) => {
-    return isPending
-      ? "pending"
-      : `inline-block w-full  text-center text-lg py-2  bg-transparent text rounded font-semibold ${isActive
-        ? "border-blue-500   border-y backdrop-filter backdrop-blur-3xl "
-        : "   hover:border-y hover:border-blue-500 hover:text-gray-600 hover:backdrop-blur-3xl"
-      }`;
-  };
+
 
 const Navbar = () => {
   const {user, logout} = useContext(AuthContext)
     const links = <>
-    <li><NavLink to='/' className={navLinkStyle}>Home</NavLink></li>
-    <li><NavLink to='/product' className={navLinkStyle}> Products</NavLink></li>
+    <li><NavLink to='/' style={({ isActive,  }) => {
+        return {
+          fontWeight: isActive ? "bold" : "",
+          background: isActive ? "#1dadc0" : "black",
+          color: isActive ? "white" : "white",
+        };
+      }}>Home</NavLink></li>
+    <li><NavLink to='/product' style={({ isActive,  }) => {
+        return {
+          fontWeight: isActive ? "bold" : "",
+          background: isActive ? "#1dadc0" : "black",
+          color: isActive ? "white" : "white",
+        };
+      }}> Products</NavLink></li>
   
 </>
     return (
@@ -28,7 +33,7 @@ const Navbar = () => {
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </div>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 space-y-2">
         {
             links
         }

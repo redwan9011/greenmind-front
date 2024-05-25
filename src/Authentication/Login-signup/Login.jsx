@@ -47,7 +47,7 @@ const {login, user} = useContext(AuthContext)
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" {...register("email")} name='email' placeholder="email" className="input " required />
+          <input type="email" {...register("email")} name='email' placeholder="admin: redwan390309@gmail.com" className="input " required />
         </div>
 
 
@@ -55,7 +55,7 @@ const {login, user} = useContext(AuthContext)
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type={show ? "text" : 'password' } {...register("password")} name='password' placeholder="password" className="input " required />
+          <input type={show ? "text" : 'password' } {...register("password")} name='password' placeholder="admin: 123456A@" className="input " required />
           <div className='flex items-center gap-1 cursor-pointer mt-1 ' onClick={()=>setShow (!show)}>
           <span  >Show Password?</span>
             {

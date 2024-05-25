@@ -69,14 +69,14 @@ const ProductDetails = () => {
     return (
         <div className="bg-slate-100 pb-6">
 
-            <div className="flex gap-8 my-10  max-w-6xl mx-auto">
+            <div className="flex  md:gap-5 lg:gap-8 my-10  max-w-6xl mx-auto px-4 md:px-6 lg:px-0">
                 {/* left side */}
-                <div className="w-full flex flex-col justify-center items-center">
-                    <img src={photo} alt="" className="w-1/2" />
+                <div className="lg:w-full flex flex-col justify-center items-center">
+                    <img src={photo} alt="" className="w-36 lg:w-1/2" />
                   
                 </div>
                 {/* right side */}
-                <div className="w-full py-8  flex flex-col justify-between">
+                <div className=" lg:w-full py-8  flex flex-col justify-between">
                    <div className="space-y-2">
                    <h1 className="text-xl font-semibold">{name}</h1>
                     <h2 className="text-lg font-semibold">{brand}</h2>
@@ -130,7 +130,7 @@ const ProductDetails = () => {
                 
             </div>
               {/* review */}
-              <div className=" max-w-6xl mx-auto mb-10">
+              <div className=" max-w-6xl mx-auto mb-10 px-4 md:px-6 lg:px-0">
                 <h1 className="text-base md:text-lg lg:text-2xl font-bold my-8">Reviews</h1>
                    
 
@@ -152,10 +152,10 @@ const ProductDetails = () => {
                       
                       
                       <SwiperSlide>
-                          <div className='bg-cyan-200 rounded-xl  flex flex-col text-black font-semibold p-6 '>
+                          <div className='bg-cyan-200 rounded-xl  flex flex-col text-black font-semibold p-2 lg:p-6 w-full'>
                           <p>{review?.review}</p>
       
-                         <div className='flex justify-between mt-4'>
+                         <div className='flex flex-col lg:flex-row justify-between mt-4'>
                          <div className='flex'>
                           <span><FaQuoteLeft /></span>
                           <h3> {review?.reviewer}</h3>
@@ -178,8 +178,8 @@ const ProductDetails = () => {
       
                                           </div>
 
-                        <div className="flex gap-1 mt-4">
-                        <input type="text" placeholder="reply" className="input input-bordered " />
+                        <div className="flex flex-col  md:flex-row gap-1 mt-4">
+                        <input type="text" placeholder="reply" className="input input-bordered w-16 md:w-full placeholder:text-xs md:placeholder:text-base " />
                         <button className="btn">Reply</button>
                         </div>
       
