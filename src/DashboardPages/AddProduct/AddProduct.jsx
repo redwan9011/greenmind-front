@@ -46,10 +46,12 @@ const axiospublic = useAxiosPublic()
       }
      
     return (
-        <div>
+        <div className="mb-10">
+          <h1 className="my-8 text-3xl font-bold text-center">Add your Product</h1>
             <form  onSubmit={handleSubmit(onSubmit)} className="space-y-3 bg-slate-300 p-10">
 
-            <div className="form-control">
+        <div className="grid grid-cols-2 gap-4 ">
+        <div className="form-control">
               <label className="label">
                 <span className="label-text">Product Name</span>
               </label>
@@ -57,14 +59,7 @@ const axiospublic = useAxiosPublic()
               {errors.name && <span className='text-red-500 mt-1'>This field is required</span>}
             </div>
             
-            <div className="w-full">
-                  <label className="block mb-1">
-                    <span className="font-semibold"><span className='text-red-700 pr-2'>*</span>Product Photo</span>
-                  </label>
-                  <input type="file" {...register("photo", { required: true })} name='photo' placeholder="photo url" className="file-input file-input-bordered w-full max-w-xs" />
-
-                  {errors.photo && <span className='text-red-500 mt-1'>This field is required</span>}
-                </div>
+          
 
             <div className="form-control">
               <label className="label">
@@ -107,9 +102,9 @@ const axiospublic = useAxiosPublic()
               {errors.name && <span className='text-red-500 mt-1'>This field is required</span>}
             </div>
 
-            <div className='w-full'>
+            <div className='w-full '>
                   <label className="block mb-1 font-semibold"><span className='text-red-700 pr-2'>*</span>Select category</label>
-                  <select {...register("category")} name="category" className="input border-none rounded-md w-full">
+                  <select {...register("category")} name="category" className="input border-none rounded-md w-full cursor-pointer">
 
                     <option value='Home'>Home</option>
                     <option value='Electronics'>Electronics</option>
@@ -118,9 +113,19 @@ const axiospublic = useAxiosPublic()
 
                   </select>
                 </div>
+
+                <div className="w-full">
+                  <label className="block mb-1">
+                    <span className="font-semibold"><span className='text-red-700 pr-2'>*</span>Product Photo</span>
+                  </label>
+                  <input type="file" {...register("photo", { required: true })} name='photo' placeholder="photo url" className="file-input file-input-bordered w-full max-w-xs" />
+
+                  {errors.photo && <span className='text-red-500 mt-1'>This field is required</span>}
+                </div>
            
+        </div>
         
-            <div className="form-control mt-2">
+            <div className="form-control pt-4">
                 <input type="submit" value="Add Product" className='bg-black cursor-pointer text-white py-3 rounded-md font-semibold' />
             </div>
             </form>

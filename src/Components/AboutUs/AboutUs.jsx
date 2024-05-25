@@ -4,7 +4,8 @@ import { MdAddIcCall, MdOutlineLocalShipping } from "react-icons/md";
 
 const AboutUs = () => {
     return (
-        <div className="my-8 md:my-10 lg:my-14 text-center px-10">
+        <div className="max-w-6xl mx-auto">
+            <div className="my-8 md:my-10 lg:my-14 text-center px-10">
             <h1 className="text-xl md:text-2xl lg:text-4xl font-bold mb-1">About Us</h1>
             <p className="text-gray-500">Order now and appreciate the products quality</p>
             <div className="grid grid-cols-3 justify-center mt-7">
@@ -28,6 +29,7 @@ const AboutUs = () => {
                 </div>
                
             </div>
+        </div>
         </div>
     );
 };

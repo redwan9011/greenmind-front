@@ -1,5 +1,4 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import home from '../../assets/electronic.webp'
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
@@ -17,7 +16,7 @@ const ClientReview = () => {
     }, [])
     console.log(reviews);
     return (
-        <div className='my-14'>
+        <div className='my-14 max-w-6xl mx-auto'>
             <h1 className='text-lg md:text-xl lg:text-2xl my-8 text-black font-bold'>What Customer say about <br></br> GREENMIND?</h1>
         <Swiper
           slidesPerView={3}

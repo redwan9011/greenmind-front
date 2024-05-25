@@ -26,17 +26,17 @@ const router = createBrowserRouter([
         {
             path: '/product',
             element: <Products></Products>,
-            loader: () => fetch(`http://localhost:3000/productCount`),
+            loader: () => fetch(`https://greenmind-backend-pi.vercel.app/productCount`),
         },
         {
             path: '/products/:category',
             element: <ProductCategory></ProductCategory>,
-            loader: () => fetch(`http://localhost:3000/product`),
+            loader: () => fetch(`https://greenmind-backend-pi.vercel.app/product`),
         },
         {
           path: '/product/:id',
           element: <ProductDetails></ProductDetails>,
-          loader: ({params})=> fetch(`http://localhost:3000/product/${params.id}`)
+          loader: ({params})=> fetch(`https://greenmind-backend-pi.vercel.app/product/${params.id}`)
         }
       ]
     },

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './style.css';
 import { CiFilter } from "react-icons/ci";
+import Button from "../../Components/Button/Button";
 
 const Products = () => {
     const axiosPublic = useAxiosPublic();
@@ -14,7 +15,7 @@ const Products = () => {
     const [sortOrder, setSortOrder] = useState('asc');
     const [brandFilter, setBrandFilter] = useState('');
 
-    const [itemsPerPage, setItemsPerPage] = useState(6);
+    const [itemsPerPage, setItemsPerPage] = useState(8);
     const numberOfPages = Math.ceil(totalCount / itemsPerPage);
     const pages = [...Array(numberOfPages).keys()];
 
@@ -84,7 +85,7 @@ const Products = () => {
     }, [])
     console.log(reviews);
     return (
-        <div className="my-10">
+        <div className="my-10 max-w-6xl mx-auto">
             <div >
                 {/* filter */}
           <div className="flex gap-2">
@@ -121,33 +122,25 @@ const Products = () => {
       
             
             </div>
-            <div className="grid grid-cols-3 gap-5">
+
+            {/* cards */}
+            <div className="grid grid-cols-4 gap-8">
                 {products.map(product => (
-                    <div className="card card-compact bg-base-100 shadow-xl" key={product._id}>
+                    <div className="card card-compact bg-base-100 shadow-xl relative" key={product._id}>
                         <figure><img src={product.photo} alt="Product" /></figure>
-                        <div className="card-body">
-                            <h2 className="card-title">{product.name}</h2>
-                            <p>{product.price}</p>
-                            <h2>{product.category}</h2>
-                            <h5>{product.brand}</h5>
-                            <div>
-                        
-                        { 
-                             <div>
-                             {
-                                    reviews.filter(review=> review.commentid ===product._id).slice(1,2).map((rev, i) => <div key={rev._id}>
-                                     
-                                      <span>{rev.rating}</span>
-                                    
-                                      </div>
-    
-                                )
-                                    }
-                             </div>
-                        }
-                         
+                        <h5 className="absolute right-3 top-2 font-semibold text-cyan-500">{product.brand}</h5>
+                        <div className="card-body bg-cyan-200 rounded-xl">
+                            <div className="flex items-center justify-between">
+                            <h2 className="text-base font-semibold">{product.name}</h2>
+                            
                             </div>
-                            <Link to={`/product/${product._id}`}>Detail</Link>
+                        
+                            <h2 className="text-base font-semibold">{product.category}</h2>
+                          <div className="flex justify-between">
+                            <p>Price:{product?.price}</p>
+                          <Link to={`/product/${product._id}`} className="bg-white px-4 py-2 rounded-xl hover:bg-cyan-800 hover:text-white duration-200"> Details </Link>
+                          
+                          </div>                       
                         </div>
                     </div>
                 ))}
@@ -167,9 +160,9 @@ const Products = () => {
                 ))}
                 <button className="bg-black text-white text-md px-2 py-1 rounded-md" onClick={handleNextPage}>Next</button>
                 <select value={itemsPerPage} onChange={handlePerPage}>
-                    <option value="6">6</option>
-                    <option value="9">9</option>
-                    <option value="18">18</option>
+                    <option value="8">8</option>
+                    <option value="12">12</option>
+                    <option value="20">20</option>
                 </select>
             </div>
         </div>

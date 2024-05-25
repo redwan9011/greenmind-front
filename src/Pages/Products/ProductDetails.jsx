@@ -1,9 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { FaRegStar } from "react-icons/fa6";
+// import { FaRegStar, FaStar } from "react-icons/fa6";
 import { AiFillDislike, AiFillLike } from "react-icons/ai";
 import useAxiosPublic from "../../Hooks/useAxioPublic";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+
+
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
+// import { useEffect, useState } from 'react';
+import { FaQuoteLeft, FaStar } from 'react-icons/fa6';
 
 
 const ProductDetails = () => {
@@ -58,49 +67,32 @@ const ProductDetails = () => {
     }, [])
 
     return (
-        <div>
+        <div className="bg-slate-100 pb-6">
 
-            <div className="flex gap-8 my-10 bg-slate-50 shadow-xl">
+            <div className="flex gap-8 my-10  max-w-6xl mx-auto">
                 {/* left side */}
                 <div className="w-full flex flex-col justify-center items-center">
                     <img src={photo} alt="" className="w-1/2" />
-                    {/* review */}
-                    <div>
-                        {
-                            review.map(rev =>
-                                <div key={rev._id}>
-                                    <h1>Reviewr: {rev.reviewer}</h1>
-                                    <h2>rating: {rev.rating}</h2>
-                                    <div className="flex flex-col md:flex-row gap-2 md:gap-10">
-                                        <button className="btn" onClick={handleLike}>
-                                            Like {reaction === 'like' ? 1 : 0} <AiFillLike />
-                                        </button>
-                                        <button className="btn" onClick={handleDislike}>
-                                            Dislike {reaction === 'dislike' ? 1 : 0} <AiFillDislike />
-                                        </button>
-
-                                    </div>
-                                </div>
-                            )
-                        }
-
-
-
-                    </div>
+                  
                 </div>
                 {/* right side */}
-                <div className="w-full">
-                    <h1>{name}</h1>
-                    <h2>{brand}</h2>
+                <div className="w-full py-8  flex flex-col justify-between">
+                   <div className="space-y-2">
+                   <h1 className="text-xl font-semibold">{name}</h1>
+                    <h2 className="text-lg font-semibold">{brand}</h2>
 
-                    <p>{description}</p>
-                    <p>{availability}</p>
-                    <h4>{price}</h4>
+                    <p className="text-gray-500">{description}</p>
+                    <p className="font-semibold">Availablity: {availability}</p>
+                    <h4 className="font-semibold">Price: {price}</h4>
+                   </div>
 
 
-                    <form onSubmit={handlereview} className="mt-2">
+                    <form onSubmit={handlereview} className="mt-2 space-y-2">
 
-                        <div className="flex gap-2">
+                       
+
+                        <textarea name="review" placeholder="type your review" className="textarea textarea-bordered w-full" required></textarea>
+                        <div className="flex gap-2 pb-3">
                             {
                                 [...Array(5)].map((star, i) => {
                                     const currentRating = i + 1;
@@ -115,9 +107,9 @@ const ProductDetails = () => {
                                                     onClick={() => setRating(currentRating)}
                                                     required
                                                 />
-                                                <FaRegStar
+                                                <FaStar
                                                     className="cursor-pointer text-2xl"
-                                                    color={currentRating <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
+                                                    color={currentRating <= (hover || rating) ? '#ffc107' : '#000000'}
                                                     onMouseEnter={() => setHover(currentRating)}
                                                     onMouseLeave={() => setHover(null)}
                                                 />
@@ -128,14 +120,84 @@ const ProductDetails = () => {
                             }
                             {rating}
                         </div>
-
-                        <textarea name="review" placeholder="type your review" className="textarea textarea-bordered w-full" required></textarea>
-                        <input type="submit" value="Review" className="bg-slate-700 px-2 py-1 md:px-3 md:py-2 text-white cursor-pointer mt-2 rounded-md text-sm md:text-base" />
+                        <input type="submit" value="Review" className="bg-slate-700 px-2 py-1 md:px-3 md:py-2 text-white cursor-pointer  mt-5 rounded-md text-sm md:text-base " />
+                       
                     </form>
 
 
                 </div>
+
+                
             </div>
+              {/* review */}
+              <div className=" max-w-6xl mx-auto mb-10">
+                <h1 className="text-base md:text-lg lg:text-2xl font-bold my-8">Reviews</h1>
+                   
+
+            {
+                review.length > 0 ? 
+
+                <Swiper
+                slidesPerView={3}
+                spaceBetween={30}
+                pagination={{
+                  clickable: true,
+                }}
+                modules={[Pagination]}
+                className="mySwiper"
+              >
+      
+                {
+                      review.map( review => 
+                      
+                      
+                      <SwiperSlide>
+                          <div className='bg-cyan-200 rounded-xl  flex flex-col text-black font-semibold p-6 '>
+                          <p>{review?.review}</p>
+      
+                         <div className='flex justify-between mt-4'>
+                         <div className='flex'>
+                          <span><FaQuoteLeft /></span>
+                          <h3> {review?.reviewer}</h3>
+                          </div>
+      
+                          <div className='flex items-center gap-1'>
+                              <FaStar></FaStar>
+                              <span>{review?.rating}</span>
+                          </div>
+                         </div>
+                         <div className="flex flex-col md:flex-row gap-2 md:gap-10 mt-3">
+                                              <button className="btn " onClick={handleLike}>
+                                              <AiFillLike />
+                                                   {reaction === 'like' ? 1 : 0} 
+                                              </button>
+                                              <button className="btn" onClick={handleDislike}>
+                                              <AiFillDislike />
+                                                 {reaction === 'dislike' ? 1 : 0} 
+                                              </button>
+      
+                                          </div>
+
+                        <div className="flex gap-1 mt-4">
+                        <input type="text" placeholder="reply" className="input input-bordered " />
+                        <button className="btn">Reply</button>
+                        </div>
+      
+                          </div>
+                      </SwiperSlide>)
+                }
+                   
+               
+                
+              
+              
+              </Swiper> : 
+              <h1 className="text-xl font-bold text-black pb-5"> No review</h1>
+            }
+
+
+
+                    </div>
         </div>
     );
 };

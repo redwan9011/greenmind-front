@@ -5,22 +5,22 @@ import useAdmin from "../Hooks/useAdmin";
 const Dashboard = () => {
     const [isAdmin] = useAdmin()
     return (
-        <div>
+        <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-12 gap-5">
-                <div className="col-span-3 bg-blue-400 h-screen text-center py-5">
+                <div className="col-span-3 bg-cyan-300 min-h-screen text-center py-5">
                      
                {
                 isAdmin ? 
-                <ul>
-                <li> <Link to ='/dasboard/users'  >Manage Users</Link> </li>
-                <li> <Link to ='/dasboard/addproduct'  >Ad product</Link> </li>
-                <li> <Link to ='/'  >Home</Link> </li>
+                <ul className="space-y-2 mt-10">
+                <li className="text-lg font-semibold hover:underline"> <Link to ='/dasboard/users'  >Manage Users</Link> </li>
+                <li className="text-lg font-semibold hover:underline"> <Link to ='/dasboard/addproduct'  >Ad product</Link> </li>
+                <li className="text-lg font-semibold hover:underline"> <Link to ='/'>Home</Link> </li>
             </ul>
 
             : 
             <ul>
-                <li> <Link>Profile</Link></li>
-                <li> <Link to ='/'  >Home</Link> </li> 
+                <li className="text-lg font-semibold hover:underline"> <Link>Profile</Link></li>
+                <li className="text-lg font-semibold hover:underline"> <Link to ='/'  >Home</Link> </li> 
             </ul>
                }
                 </div>

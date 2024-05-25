@@ -15,7 +15,7 @@ const Feature = () => {
     },[])
     console.log(products);
     return (
-        <div className="my-14">
+        <div className="my-14 max-w-6xl mx-auto">
             <h1 className="text-center font-bold text-lg md:text-2xl lg:text-4xl mb-3 md:mb-5 lg:mb-7">Best selling Prodcucts</h1>
             <p></p>
             <div className="grid grid-cols-4 gap-6">
